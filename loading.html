@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script src="js/jq.js"></script>
+<body style="background-color: black">
+
+
+<button>dsadsa</button>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+        }
+        .BigLoadBox{
+            background-color: white;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: fixed;
+            z-index: 999;
+            top: 0px;
+            left: 0px;
+            transition-duration: 0.8s;
+        }
+    .LoadBox{
+        margin: auto;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        transform: rotate(45deg);
+        animation:Rotate 2s infinite;
+ 
+
+    }
+    .LoadBox img{
+        width: 50px;
+        transition-duration: 0.5s;
+        
+    }
+   
+    @keyframes Rotate{
+0%{
+    transform: rotate(45deg)
+}
+100%{
+    transform: rotate(135deg)
+}
+
+    }
+
+  
+    </style>
+    <div class="BigLoadBox " id="BigLoadBox">
+
+
+
+
+        <div class="LoadBox">
+<img class="load1" src="img/load1.png" alt="">
+<img class="load2" src="img/load2.png" alt="">
+<img class="load4" src="img/load3.png" alt="">
+<img class="load3" src="img/load4.png" alt="">
+
+        </div>
+    </div>
+<script>
+setTimeout(function(){
+    $("#BigLoadBox").css("opacity","0");
+
+},3500)
+
+setTimeout(function(){
+    $("#BigLoadBox").css("display","none");
+    
+},4300)
+</script>
+
+</body>
+</html>
