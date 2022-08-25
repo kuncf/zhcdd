@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        body
+        {
+            background-color: rgb(88, 72, 167);
+        }
+        .titt{
+            text-align: center;
+            color: rgb(242, 229, 255);
+            line-height: 80px;
+        }
+        .cjbox{
+         width: 100%;
+        }
+        .cjboxx{
+            width: 15%;
+            display: inline;
+        }
+        img{
+            min-width: none;
+        }
+        .btn{
+           cursor: pointer;
+        }
+        #zjxxx{
+            font-size: 20px;
+            white-space: pre;
+        
+        }
+     
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+    <link rel="stylesheet" href="CS/swiper-4.3.3.min.css">
+    <link rel="stylesheet" href="cs/cf.css">
+    <link rel="stylesheet" href="cs/comm.css">
+    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+</head>
+<body>
+   
+  <center>  <div class="title title1"></div></center>
+   <h2 class="tittt">模拟竞技荣光抽奖</h2>
+   
+    <div class="cjbox">
+<div class="cjboxx"> <img src="CS/prop1.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop2.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop3.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop4.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop5.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop6.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop7.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop8.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop9.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop10.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop11.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop12.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop13.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop14.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop15.png" alt=""></div>
+<div class="cjboxx"> <img src="CS/prop16.png" alt=""></div>
+
+    </div>
+    <div class="btn-box1">
+        <center> <div class="btn2 btn"  href="javascript:OUT.user.keyDraw(1);" onclick="PTTSendClick1();"></div>
+        <div class="btn3 btn"  href="javascript:OUT.user.keyDraw(10);" onclick="PTTSendClick10();"></div></center>
+    </div>
+    <div style="font-size:16px;color:white;line-height: 20px;">中奖信息:
+        <div>您已抽了<span id="cjcs">0</span>次，共获得: <span id="zjxxb" style="white-space: pre;"></span></div>
+    
+       </div>
+  <center>  <div class="part3">
+        <div class="title title3">
+            <p>集字兑换：用户获得的不同类型字卡可以兑换为相应数量的“锋芒”卡</p>
+        </div>
+        <img class="cards-img" src="https://game.gtimg.cn/images/cf/act/8315/a20220721znq/h5/cards-img.png" alt="">
+      
+</div>
+<img src="CS/gailv.jpg" alt="">
+
+<div class="mdui-dialog" id="dialog">
+    <div class="mdui-dialog-title">中奖信息</div>
+    <div class="mdui-dialog-content" id="zjxxx">You'll lose all photos and media!</div>
+    <div class="mdui-dialog-actions">
+      <button class="mdui-btn mdui-ripple" mdui-dialog-cancel>确定</button>
+  
+    </div>
+  </div>
+</center>
+</body>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script>
+    var zjxxend="\n";
+    var cjcs=0;
+   var $ = mdui.$;
+var inst = new mdui.Dialog('#dialog');
+   var zjxx="";
+   var zxxxsz1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+   var zxxxsz2=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    const gailv = [
+    [1,4,'M200-竞技荣光'],
+    [5,8, '柯尔特-竞技荣光'],
+    [9,11, '电竞教官-云悠悠'],
+    [12,25, '擎天-竞技荣光'],
+    [26,30, '裁决-雪莉杨'],
+    [31,38, '英雄级通用角色普通栏位扩展券'],
+    [39,48, '稀有角色通用扩展栏位\n高级角色通用扩展栏位(二选一)'],
+    [49,50, '伏羲 盘古二选一'],
+    [51,60, '高爆手雷-竞技荣光'],
+    [61,75, '烟雾弹-竞技荣光'],
+    [76,90, '闪光弹-竞技荣光'],
+    [91,238, '王者之石礼盒'],
+    [239,240, '“竞”字卡'],
+    [241,250, '“技”字卡'],
+    [251,290, '“荣”字卡'],
+    [291,590, '“光”字卡'],
+    [591,990, '“锋芒”卡'],
+    [991,1000, '普通角色通用扩展栏位'],
+];
+function PTTSendClick1()
+{
+    cjcs=cjcs+1;
+    zjxxend="\n";
+    $("#cjcs").text(cjcs);
+    zjxx="";
+  var sjs= Math.ceil(Math.random()*1000);
+  
+  var syzjxx="";
+  for(j = 0; j < gailv.length; j++) {
+   var zxs=gailv[j][0]
+   var zds=gailv[j][1]
+  
+   if(sjs>=zxs&&sjs<=zds)
+   {
+  zjxx=gailv[j][2];
+zxxxsz2[j]=zxxxsz2[j]+1;
+
+// method
+$("#zjxxx").text(zjxx);
+  inst.open();
+
+   }
+   
+  
+} 
+
+
+
+for(gx=0;gx<17;gx++)
+   {
+    zjxxend=zjxxend+gailv[gx][2]+"X"+zxxxsz2[gx]+"\n";
+    console.log(zxxxsz2[gx])
+   }
+   $("#zjxxb").text(zjxxend);
+
+}
+
+ function PTTSendClick10()
+ {
+    cjcs=cjcs+10;
+    zjxxend="";
+    $("#cjcs").text(cjcs);
+    zxxxsz1=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    zjxx="";
+for(var s=0;s<10;s++)
+{
+    var sjs= Math.ceil(Math.random()*1000);
+  
+  var syzjxx="";
+  for(j = 0; j < gailv.length; j++) {
+   var zxs=gailv[j][0]
+   var zds=gailv[j][1]
+  
+   if(sjs>=zxs&&sjs<=zds)
+   {
+    
+    zxxxsz1[j]=zxxxsz1[j]+1;
+    zxxxsz2[j]=zxxxsz2[j]+1;
+
+   }}
+}
+
+for(xxh=0;xxh<zxxxsz1.length;xxh++)
+{
+    if(zxxxsz1[xxh]!=0)
+    {
+        zjxx=zjxx+gailv[xxh][2]+"X"+zxxxsz1[xxh]+"\n";
+    }
+}
+$("#zjxxx").text(zjxx);
+  inst.open();
+  
+for(gx=0;gx<17;gx++)
+   {
+    zjxxend=zjxxend+gailv[gx][2]+"X"+zxxxsz2[gx]+"\n";
+    console.log(zxxxsz2[gx])
+   }
+   $("#zjxxb").text(zjxxend);
+ }
+
+
+
+</script>
+</html>
